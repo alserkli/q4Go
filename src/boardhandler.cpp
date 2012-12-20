@@ -1356,37 +1356,32 @@ void BoardHandler::debug()
 }
 #endif
 
-bool BoardHandler::getBlackTurn()
+bool BoardHandler::getBlackTurn() // is now black turn?
 {
-	if (tree->getCurrent()->getPLinfo())
+	Move* move = tree->getCurrent();
+	if (move->getPLinfo())
 		// color of next stone is same as current
-		return tree->getCurrent()->getPLnextMove() == stoneBlack;
+		return move->getPLnextMove() == stoneBlack;
 
+	GameMode mode = move->getGameMode();
 	if (currentMove == 0)
 	{
-		// Handicap, so white starts
-		if (gameData->handicap >= 2)
-			return false;
+		if (mode == modeEdit && move->son)
+			return move->son->getColor() == stoneBlack;
+		else // black starts if no handicap
+			return gameData->handicap < 2;
+	}
 
+	if (mode == modeEdit) {
+		if (move->parent)
+			return move->parent->getColor() == stoneBlack;
+		else if (move->son)
+			return move->son->getColor() == stoneBlack;
+		// Crap happened. 50% chance this is correct
+		qWarning("Oops, crap happened in BoardHandler::getBlackTurn() !");
 		return true;
-	}
-
-	// Normal mode
-	if (tree->getCurrent()->getGameMode() == modeNormal ||
-		tree->getCurrent()->getGameMode() == modeObserve ||
-		tree->getCurrent()->getGameMode() == modeMatch ||
-		tree->getCurrent()->getGameMode() == modeTeach ||
-    		tree->getCurrent()->getGameMode() == modeComputer)
-	{
-			// change color
-			return tree->getCurrent()->getColor() == stoneWhite;
-	}
-	// Edit mode. Return color of parent move.
-	else if (tree->getCurrent()->parent != NULL)
-		return tree->getCurrent()->parent->getColor() == stoneWhite;
-	// Crap happened. 50% chance this is correct .)
-	qWarning("Oops, crap happened in BoardHandler::getBlackTurn() !");
-	return true;
+	} else						// normal mode: change color
+		return move->getColor() == stoneWhite;
 }
 
 bool BoardHandler::loadSGF(const QString &fileName)
