@@ -123,7 +123,7 @@
           <item>
            <widget class="QLabel" name="TextLabel2">
             <property name="text">
-             <string>Cap:</string>
+             <string>Cap.:</string>
             </property>
             <property name="wordWrap">
              <bool>false</bool>
@@ -221,7 +221,40 @@
           <item>
            <widget class="QLabel" name="TextLabel5">
             <property name="text">
-             <string>Cap:</string>
+             <string>Terr.:</string>
+            </property>
+            <property name="wordWrap">
+             <bool>false</bool>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLabel" name="terrBlack">
+            <property name="text">
+             <string>0</string>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+            </property>
+            <property name="wordWrap">
+             <bool>false</bool>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </item>
+        <item>
+         <layout class="QHBoxLayout" name="_8">
+          <property name="spacing">
+           <number>6</number>
+          </property>
+          <property name="margin">
+           <number>0</number>
+          </property>
+          <item>
+           <widget class="QLabel" name="TextLabel6">
+            <property name="text">
+             <string>Cap.:</string>
             </property>
             <property name="alignment">
              <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
@@ -247,39 +280,6 @@
          </layout>
         </item>
         <item>
-         <layout class="QHBoxLayout" name="_8">
-          <property name="spacing">
-           <number>6</number>
-          </property>
-          <property name="margin">
-           <number>0</number>
-          </property>
-          <item>
-           <widget class="QLabel" name="TextLabel6">
-            <property name="text">
-             <string>Total:</string>
-            </property>
-            <property name="wordWrap">
-             <bool>false</bool>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="QLabel" name="totalBlack">
-            <property name="text">
-             <string>0</string>
-            </property>
-            <property name="alignment">
-             <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-            </property>
-            <property name="wordWrap">
-             <bool>false</bool>
-            </property>
-           </widget>
-          </item>
-         </layout>
-        </item>
-        <item>
          <layout class="QHBoxLayout" name="_6">
           <property name="spacing">
            <number>6</number>
@@ -290,7 +290,7 @@
           <item>
            <widget class="QLabel" name="TextLabel4">
             <property name="text">
-             <string>Terr.:</string>
+             <string>Total:</string>
             </property>
             <property name="wordWrap">
              <bool>false</bool>
@@ -298,7 +298,7 @@
            </widget>
           </item>
           <item>
-           <widget class="QLabel" name="terrBlack">
+           <widget class="QLabel" name="totalBlack">
             <property name="text">
              <string>0</string>
             </property>
